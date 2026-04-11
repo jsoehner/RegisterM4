@@ -1,0 +1,47 @@
+name: Package Release
+
+on:
+  push:
+    tags:
+      - v*
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build all workspaces
+        run: npm run build --workspaces --if-present
+
+      - name: Create release archives
+        run: |
+          mkdir -p out
+          tar -czf out/api-dist.tar.gz -C apps/api dist package.json
+          tar -czf out/worker-dist.tar.gz -C apps/worker dist package.json
+          tar -czf out/shared-dist.tar.gz -C packages/shared dist package.json
+          tar -czf out/web-build.tar.gz -C apps/web .next package.json next.config.js
+
+      - name: Publish release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            out/api-dist.tar.gz
+            out/worker-dist.tar.gz
+            out/shared-dist.tar.gz
+            out/web-build.tar.gz
+          generate_release_notes: true

@@ -40,3 +40,8 @@ This repository starts implementation for a service that lets users:
 - Current implementation uses file-backed JSON storage for speed of setup.
 - Credential verification and registration execution are scaffolded with adapter-based stubs and are intentionally conservative.
 - Do not use this MVP starter in production without replacing storage, secret management, and adapter hardening.
+
+## CI/CD
+
+- Workflow and runbook documentation: `/.github/workflows/README.md`
+- Extended CI/CD operations guide: `/docs/ci-cd/README.md`

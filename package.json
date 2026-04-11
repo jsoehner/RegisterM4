@@ -12,6 +12,7 @@
     "dev:web": "npm run dev --workspace @sra/web",
     "dev:worker": "npm run dev --workspace @sra/worker",
     "build": "npm run build --workspaces",
-    "typecheck": "npm run typecheck --workspaces"
+    "typecheck": "npm run typecheck --workspaces",
+    "test:phase2": "zsh ./scripts/phase2-test.sh"
   }
 }

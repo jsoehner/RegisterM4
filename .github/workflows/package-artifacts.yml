@@ -1,0 +1,56 @@
+name: Package Artifacts
+
+on:
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: api
+            archive: api-dist.tar.gz
+            working_directory: apps/api
+            inputs: dist package.json
+          - name: worker
+            archive: worker-dist.tar.gz
+            working_directory: apps/worker
+            inputs: dist package.json
+          - name: shared
+            archive: shared-dist.tar.gz
+            working_directory: packages/shared
+            inputs: dist package.json
+          - name: web
+            archive: web-build.tar.gz
+            working_directory: apps/web
+            inputs: .next package.json next.config.js
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build all workspaces
+        run: npm run build --workspaces --if-present
+
+      - name: Archive workspace package
+        run: |
+          mkdir -p out
+          tar -czf "out/${{ matrix.archive }}" -C "${{ matrix.working_directory }}" ${{ matrix.inputs }}
+
+      - name: Upload packaged artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: registerm4-${{ matrix.name }}
+          path: out/${{ matrix.archive }}
+          if-no-files-found: error

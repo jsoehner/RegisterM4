@@ -2,8 +2,13 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import type { Database } from "./types.js";
 
-const dataDir = path.resolve(process.cwd(), "data");
-const dbFile = path.join(dataDir, "db.json");
+function resolveDataPaths(): { dataDir: string; dbFile: string } {
+  const baseDir = process.env.API_DATA_DIR?.trim() || path.resolve(process.cwd(), "data");
+  return {
+    dataDir: baseDir,
+    dbFile: path.join(baseDir, "db.json")
+  };
+}
 
 const initialDb: Database = {
   users: [],
@@ -13,6 +18,8 @@ const initialDb: Database = {
 };
 
 export function loadDb(): Database {
+  const { dataDir, dbFile } = resolveDataPaths();
+
   if (!existsSync(dataDir)) {
     mkdirSync(dataDir, { recursive: true });
   }
@@ -27,6 +34,8 @@ export function loadDb(): Database {
 }
 
 export function saveDb(db: Database): void {
+  const { dataDir, dbFile } = resolveDataPaths();
+
   if (!existsSync(dataDir)) {
     mkdirSync(dataDir, { recursive: true });
   }
