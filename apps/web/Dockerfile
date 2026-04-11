@@ -2,6 +2,7 @@ FROM node:22-alpine AS build
 WORKDIR /app
 
 COPY . .
+RUN mkdir -p apps/web/public
 RUN npm ci
 RUN npm run build --workspace @sra/web
 

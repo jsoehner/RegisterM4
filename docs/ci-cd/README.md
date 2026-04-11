@@ -10,6 +10,7 @@ The automation in this repository is designed around these goals:
 2. Repeatable packaging outputs for deployment handoffs.
 3. Tag-driven release packaging for traceable deliveries.
 4. Container build/publish flow with safe default behavior.
+5. Dual-registry image publishing support (GHCR and Docker Hub).
 
 ## Workflow Inventory
 
@@ -45,6 +46,17 @@ Use this workflow to build API and web images and optionally push them to GHCR.
 
 The workflow handles missing Dockerfiles by skipping those matrix entries rather than hard-failing the entire run.
 
+### Publish Docker Images (Docker Hub) (`dockerhub-publish.yml`)
+
+Use this workflow to publish API and web images to Docker Hub.
+
+Behavior:
+
+- matrix build for API and web images
+- push on `main`, on `v*` tags, and manual dispatch
+- image metadata tags for branch, tag, sha, and latest-on-default-branch
+- validates Docker Hub secrets before publish steps
+
 ## Typical Delivery Flows
 
 ### Pull Request Flow
@@ -63,6 +75,7 @@ The workflow handles missing Dockerfiles by skipping those matrix entries rather
 1. Push a version tag (`v*`).
 2. `Package Release` produces archives and attaches them to a GitHub Release.
 3. `Docker Images` builds and pushes container images for matrix targets with Dockerfiles.
+4. `Publish Docker Images (Docker Hub)` pushes Docker Hub images for API/web.
 
 ## Naming and Output Conventions
 
@@ -78,6 +91,11 @@ The workflow handles missing Dockerfiles by skipping those matrix entries rather
 - `ghcr.io/<owner>/registerm4-api`
 - `ghcr.io/<owner>/registerm4-web`
 
+Docker Hub:
+
+- `docker.io/<dockerhub-username>/registerm4-api`
+- `docker.io/<dockerhub-username>/registerm4-web`
+
 The image workflow lowercases the image repository path before build/push.
 
 ## Security and Permission Model
@@ -87,6 +105,12 @@ The image workflow lowercases the image repository path before build/push.
 - Build and package workflows require repository read access.
 - Release workflow requires `contents: write`.
 - Docker workflow requires `packages: write` for GHCR push.
+- Docker Hub workflow uses repository secrets for registry authentication.
+
+### Required repository secrets
+
+- `DOCKERHUB_USERNAME`
+- `DOCKERHUB_TOKEN`
 
 ### Recommended hardening next steps
 
@@ -140,9 +164,14 @@ Expected when Dockerfile path in matrix does not exist.
 
 Validate repository Actions permissions and organization package policies.
 
+### Docker Hub push failure
+
+Check that `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` are configured and valid for push operations.
+
 ## Quick Reference
 
 - Build and test on code change: `Build and Test`
 - Manual package tarballs: `Package Artifacts`
 - Release tarballs on tag: `Package Release`
 - Container images: `Docker Images`
+- Docker Hub images: `Publish Docker Images (Docker Hub)`

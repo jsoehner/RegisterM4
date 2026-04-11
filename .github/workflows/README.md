@@ -4,11 +4,12 @@ This directory contains the GitHub Actions automation for validation, packaging,
 
 ## Overview
 
-The workflow set is designed to support three common delivery tracks:
+The workflow set is designed to support four common delivery tracks:
 
 1. Code quality and safety checks for pull requests and main branch updates.
 2. Build artifact packaging for manual retrieval and downstream deployment.
-3. Container image build and publish flow for API and web services.
+3. Container image build and publish flow to GHCR.
+4. Container image publish flow to Docker Hub.
 
 ## Workflow Catalog
 
@@ -87,10 +88,10 @@ The workflow set is designed to support three common delivery tracks:
 #### Matrix targets
 
 - API image:
-  - Context: `apps/api`
+  - Context: repository root (`.`)
   - Dockerfile: `apps/api/Dockerfile`
 - Web image:
-  - Context: `apps/web`
+  - Context: repository root (`.`)
   - Dockerfile: `apps/web/Dockerfile`
 
 #### Publish rules
@@ -108,6 +109,36 @@ Images are published to GHCR using lowercase repository names:
 - `ghcr.io/<owner>/registerm4-web`
 
 The workflow normalizes owner/repository casing to avoid GHCR naming failures.
+
+### 5) Publish Docker Images (Docker Hub)
+
+- File: `dockerhub-publish.yml`
+- Purpose: Build and push API/web images to Docker Hub.
+- Triggers:
+  - Push to `main` (with path filtering).
+  - Push tags matching `v*`.
+  - Manual run via `workflow_dispatch`.
+
+#### Matrix targets
+
+- API image:
+  - Dockerfile: `apps/api/Dockerfile`
+  - Docker Hub repository suffix: `registerm4-api`
+- Web image:
+  - Dockerfile: `apps/web/Dockerfile`
+  - Docker Hub repository suffix: `registerm4-web`
+
+#### Docker Hub publish tags
+
+- `latest` on default branch.
+- branch name tags.
+- release tag names (`v*`).
+- `sha-*` tags for immutable references.
+
+#### Required secrets
+
+- `DOCKERHUB_USERNAME`
+- `DOCKERHUB_TOKEN`
 
 ## Required Repository Settings
 
@@ -150,6 +181,16 @@ No custom PAT is required unless your organization policy restricts package writ
 3. Tag-based push:
    - Push a tag like `v0.1.1`.
 
+### Running Docker Hub Publish
+
+1. Add repository secrets:
+  - `DOCKERHUB_USERNAME`
+  - `DOCKERHUB_TOKEN`
+2. Trigger `Publish Docker Images (Docker Hub)` manually, or push to `main` / `v*` tags.
+3. Verify images under:
+  - `docker.io/<DOCKERHUB_USERNAME>/registerm4-api`
+  - `docker.io/<DOCKERHUB_USERNAME>/registerm4-web`
+
 ## Troubleshooting
 
 ### Workflow not triggered
@@ -173,6 +214,11 @@ No custom PAT is required unless your organization policy restricts package writ
 
 - Verify workflow permission allows package write.
 - Verify organization policies allow package publishing from Actions.
+
+### Docker Hub push denied
+
+- Confirm `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` are configured in repository secrets.
+- Confirm token has push permissions for the target repositories.
 
 ## Maintenance Guidance
 
