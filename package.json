@@ -1,0 +1,17 @@
+{
+  "name": "registerm4",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @sra/api",
+    "dev:api": "npm run dev --workspace @sra/api",
+    "dev:web": "npm run dev --workspace @sra/web",
+    "dev:worker": "npm run dev --workspace @sra/worker",
+    "build": "npm run build --workspaces",
+    "typecheck": "npm run typecheck --workspaces"
+  }
+}
