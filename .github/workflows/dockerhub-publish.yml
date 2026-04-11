@@ -39,9 +39,14 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Validate Docker Hub secrets are set
+        id: secrets
         run: |
-          test -n "${{ secrets.DOCKERHUB_USERNAME }}"
-          test -n "${{ secrets.DOCKERHUB_TOKEN }}"
+          if test -n "${{ secrets.DOCKERHUB_USERNAME }}" && test -n "${{ secrets.DOCKERHUB_TOKEN }}"; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::DOCKERHUB_USERNAME or DOCKERHUB_TOKEN secrets are not set. Skipping publish."
+          fi
 
       - name: Check for Dockerfile
         id: dockerfile
@@ -53,14 +58,14 @@ jobs:
           fi
 
       - name: Login to Docker Hub
-        if: steps.dockerfile.outputs.exists == 'true'
+        if: steps.secrets.outputs.available == 'true' && steps.dockerfile.outputs.exists == 'true'
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Docker metadata
-        if: steps.dockerfile.outputs.exists == 'true'
+        if: steps.secrets.outputs.available == 'true' && steps.dockerfile.outputs.exists == 'true'
         id: meta
         uses: docker/metadata-action@v5
         with:
@@ -72,7 +77,7 @@ jobs:
             type=sha,prefix=sha-
 
       - name: Build and push image
-        if: steps.dockerfile.outputs.exists == 'true'
+        if: steps.secrets.outputs.available == 'true' && steps.dockerfile.outputs.exists == 'true'
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -85,3 +90,8 @@ jobs:
         if: steps.dockerfile.outputs.exists != 'true'
         run: |
           echo "Skipping ${{ matrix.name }} image publish because Dockerfile is missing at ${{ matrix.dockerfile }}"
+
+      - name: Skip notice (missing secrets)
+        if: steps.secrets.outputs.available != 'true'
+        run: |
+          echo "Skipping ${{ matrix.name }} image publish because Docker Hub credentials are not configured."
