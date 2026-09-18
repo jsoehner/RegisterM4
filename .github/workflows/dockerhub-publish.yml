@@ -59,7 +59,7 @@ jobs:
 
       - name: Login to Docker Hub
         if: steps.secrets.outputs.available == 'true' && steps.dockerfile.outputs.exists == 'true'
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
