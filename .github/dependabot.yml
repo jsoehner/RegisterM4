@@ -7,6 +7,9 @@ updates:
   open-pull-requests-limit: 1
   assignees:
   - jsoehner
+  ignore:
+  - dependency-name: "fastify"
+    update-types: ["version-update:semver-major"]
 - package-ecosystem: github-actions
   directory: /
   schedule:

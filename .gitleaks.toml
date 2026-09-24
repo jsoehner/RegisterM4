@@ -1,0 +1,8 @@
+[allowlist]
+description = "Allowlist for test fixtures, mock certificates and keys"
+paths = [
+  '''(?i)tests?/''',
+  '''(?i)demo/''',
+  '''(?i)certs?/''',
+  '''(?i)\.key$'''
+]
