@@ -18,5 +18,7 @@ COPY --from=build /app/apps/web/public ./apps/web/public
 COPY --from=build /app/apps/web/package.json ./apps/web/package.json
 COPY --from=build /app/apps/web/next.config.js ./apps/web/next.config.js
 
+USER node
+
 EXPOSE 3000
 CMD ["node", "node_modules/next/dist/bin/next", "start", "apps/web", "-p", "3000", "-H", "0.0.0.0"]

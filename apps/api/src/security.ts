@@ -41,7 +41,7 @@ export function decryptSecret(cipherText: string): string {
   const tag = Buffer.from(tagB64, "base64");
   const encrypted = Buffer.from(dataB64, "base64");
 
-  const decipher = crypto.createDecipheriv("aes-256-gcm", key, iv);
+  const decipher = crypto.createDecipheriv("aes-256-gcm", key, iv, { authTagLength: 16 });
   decipher.setAuthTag(tag);
   const decrypted = Buffer.concat([decipher.update(encrypted), decipher.final()]);
   return decrypted.toString("utf8");

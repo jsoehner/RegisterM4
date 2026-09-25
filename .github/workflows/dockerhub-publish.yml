@@ -33,10 +33,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Setup Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
 
       - name: Validate Docker Hub secrets are set
         id: secrets
@@ -59,7 +59,7 @@ jobs:
 
       - name: Login to Docker Hub
         if: steps.secrets.outputs.available == 'true' && steps.dockerfile.outputs.exists == 'true'
-        uses: docker/login-action@v4
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -67,7 +67,7 @@ jobs:
       - name: Docker metadata
         if: steps.secrets.outputs.available == 'true' && steps.dockerfile.outputs.exists == 'true'
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051 # v5
         with:
           images: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.image_suffix }}
           tags: |
@@ -78,7 +78,7 @@ jobs:
 
       - name: Build and push image
         if: steps.secrets.outputs.available == 'true' && steps.dockerfile.outputs.exists == 'true'
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
         with:
           context: .
           file: ${{ matrix.dockerfile }}
