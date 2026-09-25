@@ -12,6 +12,11 @@ updates:
   ignore:
   - dependency-name: "fastify"
     update-types: ["version-update:semver-major"]
+  groups:
+    react:
+      patterns:
+        - "react*"
+        - "@types/react*"
 - package-ecosystem: github-actions
   directory: /
   schedule:
