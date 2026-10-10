@@ -49,10 +49,10 @@
 | `@fastify/merge-json-schemas` | 0.2.1 | `pkg:npm/%40fastify/merge-json-schemas@0.2.1` | 🟡 Unassimilated (No upstream CBOM) |
 | `@fastify/proxy-addr` | 5.1.1 | `pkg:npm/%40fastify/proxy-addr@5.1.1` | 🟡 Unassimilated (No upstream CBOM) |
 | `@img/colour` | 1.1.0 | `pkg:npm/%40img/colour@1.1.0` | 🟡 Unassimilated (No upstream CBOM) |
-| `@img/sharp-darwin-arm64` | 0.35.4 | `pkg:npm/%40img/sharp-darwin-arm64@0.35.4` | 🟡 Unassimilated (No upstream CBOM) |
-| `@img/sharp-darwin-x64` | 0.35.4 | `pkg:npm/%40img/sharp-darwin-x64@0.35.4` | 🟡 Unassimilated (No upstream CBOM) |
-| `@img/sharp-freebsd-wasm32` | 0.35.4 | `pkg:npm/%40img/sharp-freebsd-wasm32@0.35.4` | 🟡 Unassimilated (No upstream CBOM) |
-| `@img/sharp-libvips-darwin-arm64` | 1.3.3 | `pkg:npm/%40img/sharp-libvips-darwin-arm64@1.3.3` | 🟡 Unassimilated (No upstream CBOM) |
-| `@img/sharp-libvips-darwin-x64` | 1.3.3 | `pkg:npm/%40img/sharp-libvips-darwin-x64@1.3.3` | 🟡 Unassimilated (No upstream CBOM) |
-| `@img/sharp-libvips-linux-arm` | 1.3.3 | `pkg:npm/%40img/sharp-libvips-linux-arm@1.3.3` | 🟡 Unassimilated (No upstream CBOM) |
+| `@img/sharp-darwin-arm64` | 0.35.5 | `pkg:npm/%40img/sharp-darwin-arm64@0.35.5` | 🟡 Unassimilated (No upstream CBOM) |
+| `@img/sharp-darwin-x64` | 0.35.5 | `pkg:npm/%40img/sharp-darwin-x64@0.35.5` | 🟡 Unassimilated (No upstream CBOM) |
+| `@img/sharp-freebsd-wasm32` | 0.35.5 | `pkg:npm/%40img/sharp-freebsd-wasm32@0.35.5` | 🟡 Unassimilated (No upstream CBOM) |
+| `@img/sharp-libvips-darwin-arm64` | 1.3.4 | `pkg:npm/%40img/sharp-libvips-darwin-arm64@1.3.4` | 🟡 Unassimilated (No upstream CBOM) |
+| `@img/sharp-libvips-darwin-x64` | 1.3.4 | `pkg:npm/%40img/sharp-libvips-darwin-x64@1.3.4` | 🟡 Unassimilated (No upstream CBOM) |
+| `@img/sharp-libvips-linux-arm` | 1.3.4 | `pkg:npm/%40img/sharp-libvips-linux-arm@1.3.4` | 🟡 Unassimilated (No upstream CBOM) |
 | *... and 143 more unassimilated dependencies* | | | |
