@@ -45,3 +45,7 @@ This repository starts implementation for a service that lets users:
 
 - Workflow and runbook documentation: `/.github/workflows/README.md`
 - Extended CI/CD operations guide: `/docs/ci-cd/README.md`
+
+
+## 🛡️ Security & Cryptographic Posture
+This project tracks Software & Cryptographic Bill of Materials (SBOM & CBOM) and Post-Quantum Cryptography (PQC) readiness. See the latest [Cryptographic Audit & PQC Migration Report](docs/security/CRYPTOGRAPHIC_AUDIT.md).
