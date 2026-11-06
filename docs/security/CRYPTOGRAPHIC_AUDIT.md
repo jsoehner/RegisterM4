@@ -16,8 +16,8 @@
 | Evaluation Layer | Coverage / Status | Audit Confidence Assessment |
 |---|---|---|
 | **First-Party Code (`src/`)** | **100% Audited** (0 Custom Primitives) | 🟢 **HIGH** (Direct AST & SAST verified clean) |
-| **Third-Party Supply Chain** | **0.0%** (0 of 158 dependencies cataloged) | 🔴 LOW (Known profiles assimilated) |
-| **Overall Audit Confidence Score** | **0.6%** | 🔴 LOW (158 unassimilated supply chain dependencies) |
+| **Third-Party Supply Chain** | **0.0%** (0 of 156 dependencies cataloged) | 🔴 LOW (Known profiles assimilated) |
+| **Overall Audit Confidence Score** | **0.6%** | 🔴 LOW (156 unassimilated supply chain dependencies) |
 
 | **System OS Inventory** | **Pending Update** | 🟡 **Warning** (Local OS crypto components not yet inventoried) |
 
@@ -44,7 +44,7 @@
 |---|---|---|---|
 | `@emnapi/runtime` | 1.11.3 | `pkg:npm/%40emnapi/runtime@1.11.3` | 🟡 Unassimilated (No upstream CBOM) |
 | `@fastify/ajv-compiler` | 4.0.6 | `pkg:npm/%40fastify/ajv-compiler@4.0.6` | 🟡 Unassimilated (No upstream CBOM) |
-| `@fastify/cors` | 10.1.0 | `pkg:npm/%40fastify/cors@10.1.0` | 🟡 Unassimilated (No upstream CBOM) |
+| `@fastify/cors` | 11.3.1 | `pkg:npm/%40fastify/cors@11.3.1` | 🟡 Unassimilated (No upstream CBOM) |
 | `@fastify/error` | 4.2.0 | `pkg:npm/%40fastify/error@4.2.0` | 🟡 Unassimilated (No upstream CBOM) |
 | `@fastify/fast-json-stringify-compiler` | 5.1.0 | `pkg:npm/%40fastify/fast-json-stringify-compiler@5.1.0` | 🟡 Unassimilated (No upstream CBOM) |
 | `@fastify/forwarded` | 3.0.2 | `pkg:npm/%40fastify/forwarded@3.0.2` | 🟡 Unassimilated (No upstream CBOM) |
@@ -57,4 +57,4 @@
 | `@img/sharp-libvips-darwin-arm64` | 1.3.4 | `pkg:npm/%40img/sharp-libvips-darwin-arm64@1.3.4` | 🟡 Unassimilated (No upstream CBOM) |
 | `@img/sharp-libvips-darwin-x64` | 1.3.4 | `pkg:npm/%40img/sharp-libvips-darwin-x64@1.3.4` | 🟡 Unassimilated (No upstream CBOM) |
 | `@img/sharp-libvips-linux-arm` | 1.3.4 | `pkg:npm/%40img/sharp-libvips-linux-arm@1.3.4` | 🟡 Unassimilated (No upstream CBOM) |
-| *... and 143 more unassimilated dependencies* | | | |
+| *... and 141 more unassimilated dependencies* | | | |
