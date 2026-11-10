@@ -1,6 +1,6 @@
 ## 🛡️ Cryptographic Bill of Materials (CBOM) & PQC Migration Assessment
 
-**Format**: CycloneDX (v1.6) | **First-Party Code Crypto Assets**: 2 | **Total Tracked Crypto Assets**: 2
+**Format**: CycloneDX (v1.7) | **First-Party Code Crypto Assets**: 2 | **Total Tracked Crypto Assets**: 2
 
 ### 📊 Post-Quantum Migration Scorecard
 
@@ -15,9 +15,9 @@
 
 | Evaluation Layer | Coverage / Status | Audit Confidence Assessment |
 |---|---|---|
-| **First-Party Code (`src/`)** | **100% Audited** (0 Custom Primitives) | 🟢 **HIGH** (Direct AST & SAST verified clean) |
-| **Third-Party Supply Chain** | **0.0%** (0 of 156 dependencies cataloged) | 🔴 LOW (Known profiles assimilated) |
-| **Overall Audit Confidence Score** | **0.6%** | 🔴 LOW (156 unassimilated supply chain dependencies) |
+| **First-Party Code (`src/`, `scripts/`)** | **100% Audited** (2 Crypto Primitive(s) Inventoried) | 🟢 **HIGH** (Direct AST & SAST verified) |
+| **Third-Party Supply Chain** | **0.0%** (0 of 2 dependencies cataloged) | 🔴 LOW (Known profiles assimilated) |
+| **Overall Audit Confidence Score** | **33.3%** | 🔴 LOW (2 unassimilated supply chain dependencies) |
 
 | **System OS Inventory** | **Pending Update** | 🟡 **Warning** (Local OS crypto components not yet inventoried) |
 
@@ -42,19 +42,5 @@
 
 | Dependency Name | Version | Package URL (purl) | Status |
 |---|---|---|---|
-| `@emnapi/runtime` | 1.11.3 | `pkg:npm/%40emnapi/runtime@1.11.3` | 🟡 Unassimilated (No upstream CBOM) |
-| `@fastify/ajv-compiler` | 4.0.6 | `pkg:npm/%40fastify/ajv-compiler@4.0.6` | 🟡 Unassimilated (No upstream CBOM) |
-| `@fastify/cors` | 11.3.1 | `pkg:npm/%40fastify/cors@11.3.1` | 🟡 Unassimilated (No upstream CBOM) |
-| `@fastify/error` | 4.2.0 | `pkg:npm/%40fastify/error@4.2.0` | 🟡 Unassimilated (No upstream CBOM) |
-| `@fastify/fast-json-stringify-compiler` | 5.1.0 | `pkg:npm/%40fastify/fast-json-stringify-compiler@5.1.0` | 🟡 Unassimilated (No upstream CBOM) |
-| `@fastify/forwarded` | 3.0.2 | `pkg:npm/%40fastify/forwarded@3.0.2` | 🟡 Unassimilated (No upstream CBOM) |
-| `@fastify/merge-json-schemas` | 0.2.1 | `pkg:npm/%40fastify/merge-json-schemas@0.2.1` | 🟡 Unassimilated (No upstream CBOM) |
-| `@fastify/proxy-addr` | 5.1.1 | `pkg:npm/%40fastify/proxy-addr@5.1.1` | 🟡 Unassimilated (No upstream CBOM) |
-| `@img/colour` | 1.1.0 | `pkg:npm/%40img/colour@1.1.0` | 🟡 Unassimilated (No upstream CBOM) |
-| `@img/sharp-darwin-arm64` | 0.35.5 | `pkg:npm/%40img/sharp-darwin-arm64@0.35.5` | 🟡 Unassimilated (No upstream CBOM) |
-| `@img/sharp-darwin-x64` | 0.35.5 | `pkg:npm/%40img/sharp-darwin-x64@0.35.5` | 🟡 Unassimilated (No upstream CBOM) |
-| `@img/sharp-freebsd-wasm32` | 0.35.5 | `pkg:npm/%40img/sharp-freebsd-wasm32@0.35.5` | 🟡 Unassimilated (No upstream CBOM) |
-| `@img/sharp-libvips-darwin-arm64` | 1.3.4 | `pkg:npm/%40img/sharp-libvips-darwin-arm64@1.3.4` | 🟡 Unassimilated (No upstream CBOM) |
-| `@img/sharp-libvips-darwin-x64` | 1.3.4 | `pkg:npm/%40img/sharp-libvips-darwin-x64@1.3.4` | 🟡 Unassimilated (No upstream CBOM) |
-| `@img/sharp-libvips-linux-arm` | 1.3.4 | `pkg:npm/%40img/sharp-libvips-linux-arm@1.3.4` | 🟡 Unassimilated (No upstream CBOM) |
-| *... and 141 more unassimilated dependencies* | | | |
+| `RegisterM4` | N/A | `N/A` | 🟡 Unassimilated (No upstream CBOM) |
+| `RegisterM4` | latest | `pkg:container/RegisterM4@latest` | 🟡 Unassimilated (No upstream CBOM) |
