@@ -37,7 +37,7 @@
 | `CSPRNG-DRBG` | drbg | 256 | Quantum-Resistant CSPRNG (NIST SP 800-90A) | First-Party Code (SAST/AST)<br>`apps/api/src/security.ts:9`<br>`apps/api/src/security.ts:25` |
 | `PBKDF2-HMAC-SHA256` | kdf | 256 | Quantum-Resistant KDF / Password Hashing (Grover-resistant) | First-Party Code (SAST/AST)<br>`apps/api/src/security.ts:10`<br>`apps/api/src/security.ts:19` |
 | `AES-256-GCM` | block-cipher | 256 | Quantum-Resistant (Grover's proof) | First-Party Code (SAST/AST)<br>`apps/api/src/security.ts:26`<br>`apps/api/src/security.ts:44` |
-| `fastify (Web Session & Cookie HMAC Verification)` | mac | 256 | Quantum-Resistant (Grover's proof) | Assimilated Upstream CBOM: Node.js Web Framework Security Standard<br>`Dependency: fastify@5.12.6` |
+| `fastify (Web Session & Cookie HMAC Verification)` | mac | 256 | Quantum-Resistant (Grover's proof) | Assimilated Upstream CBOM: Node.js Web Framework Security Standard<br>`Dependency: fastify@5.12.8` |
 
 ### ⚠️ Unassimilated Third-Party Binaries & Cryptographic Blind Spots
 
