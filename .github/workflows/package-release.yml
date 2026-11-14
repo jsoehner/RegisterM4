@@ -37,7 +37,7 @@ jobs:
           tar -czf out/web-build.tar.gz -C apps/web .next package.json next.config.js
 
       - name: Publish release assets
-        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v2.2.1
+        uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3 # v2.2.1
         with:
           files: |
             out/api-dist.tar.gz
