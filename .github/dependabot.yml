@@ -10,19 +10,20 @@ updates:
   assignees:
   - jsoehner
   ignore:
-  - dependency-name: "fastify"
-    update-types: ["version-update:semver-major"]
+  - dependency-name: fastify
+    update-types:
+    - version-update:semver-major
   groups:
     react:
       patterns:
-        - "react*"
-        - "@types/react*"
+      - react*
+      - '@types/react*'
 - package-ecosystem: github-actions
   directory: /
   schedule:
-    interval: weekly
+    interval: daily
   cooldown:
     default-days: 7
-  open-pull-requests-limit: 1
+  open-pull-requests-limit: 5
   assignees:
   - jsoehner
