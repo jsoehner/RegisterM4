@@ -47,7 +47,7 @@
 |---|---|---|---|
 | `@emnapi/runtime` | 1.11.3 | `pkg:npm/%40emnapi/runtime@1.11.3` | 🟡 Unassimilated (No upstream CBOM) |
 | `@fastify/ajv-compiler` | 4.0.6 | `pkg:npm/%40fastify/ajv-compiler@4.0.6` | 🟡 Unassimilated (No upstream CBOM) |
-| `@fastify/cors` | 11.3.1 | `pkg:npm/%40fastify/cors@11.3.1` | 🟡 Unassimilated (No upstream CBOM) |
+| `@fastify/cors` | 11.4.3 | `pkg:npm/%40fastify/cors@11.4.3` | 🟡 Unassimilated (No upstream CBOM) |
 | `@fastify/error` | 4.2.0 | `pkg:npm/%40fastify/error@4.2.0` | 🟡 Unassimilated (No upstream CBOM) |
 | `@fastify/fast-json-stringify-compiler` | 5.1.0 | `pkg:npm/%40fastify/fast-json-stringify-compiler@5.1.0` | 🟡 Unassimilated (No upstream CBOM) |
 | `@fastify/forwarded` | 3.0.2 | `pkg:npm/%40fastify/forwarded@3.0.2` | 🟡 Unassimilated (No upstream CBOM) |
